@@ -1,0 +1,43 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="grid place-content-center h-[90vh]">
+  <h1 class="text-5xl">All Recipes</h1>
+
+  <ul class="mx-auto mt-8 ">
+    <% recipes.forEach(recipes => { %>
+    <li><%= recipes.name %> - <a href="/recipe/<%= recipes.id %>">info</a></li>
+    <% }); %>
+  </ul>
+  <% if(recipes.length === 1){ %> 
+    <a href="/">All recipe</a>
+    <a href="/recipe/new">Add new recipe</a>
+  <% } else{ %>
+      
+    <a href="/recipe/new">Add new recipe</a>
+    <%} %>
+
+    <div class="p-4">
+      <% const maxAdjacentPages = 2; %>
+      <% const showDots = totalPages > maxAdjacentPages * 2 + 1; %>
+    
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <% if (!showDots || i === 1 || i === totalPages || (i >= currentPage - maxAdjacentPages && i <= currentPage + maxAdjacentPages)) { %>
+
+
+          <a href="/?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>  text-3xl font-medium"><%= i %></a>
+        <% } else if ((i === currentPage - maxAdjacentPages - 1 || i === currentPage + maxAdjacentPages + 1) && showDots) { %>
+          <span>...</span>
+
+
+
+
+        <% } %>
+      <% } %>
+
+
+      <h1><%= totalPages %></h1>
+    </div>
+
+</div>
+
+

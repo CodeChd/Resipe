@@ -1,0 +1,82 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="grid place-content-center min-h-[80vh] items-center">
+  <h2>Edit Recipe</h2>
+
+  
+  <form action="/recipe/<%= recipes.id %>?_method=PUT" method="post" class="flex flex-col gap-4 mt-4" >
+    <div>
+      <label for="name">Name:</label>
+      <input
+      name="recipe[name]"
+        type="text"
+        id="name"
+        value="<%= recipes.name %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <div>
+      <label for="Ingredients">Ingredients:</label>
+      <input
+      name="recipe[ingredients]"
+        type="text"
+        id="Ingredients"
+        value="<%= recipes.ingredients %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+  </div>
+    <div>
+      <label for="Instructions">Instructions:</label>
+      <input
+      name="recipe[instructions]"
+        type="text"
+        id="Instructions"
+        value="<%= recipes.instructions %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <div>
+      <label for="cookingTime">Cooking Time:</label>
+      <input
+      name="recipe[cookingTime]"
+        type="text"
+        id="cookingTime"
+        value="<%= recipes.cookingTime %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <div>
+      <label for="Image">Image:</label>
+      <input
+      name="recipe[image]"
+        type="text"
+        id="Image"
+        value="<%= recipes.name %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <div>
+      <label for="tags">Tags:</label>
+      <input
+      name="recipe[tags]"
+        type="text"
+        id="tags"
+        value="<%= recipes.tags %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <div>
+      <label for="source">Source:</label>
+      <input
+      name="recipe[source]"
+        type="text"
+        id="source"
+        value="<%= recipes.source %>"
+        class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
+      />
+    </div>
+    <button class="bg-orange-400 ">Submit</button>
+  </form>
+
+
+</div>
