@@ -32,7 +32,7 @@ app.use(methodOverride("_method"));
 // 
 app.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1; // Get page number from query parameter
-  const perPage = 2; // Number of items per page
+  const perPage = 5; // Number of items per page
 
   try {
     const totalCount = await Recipe.countDocuments(); // Count total number of documents
@@ -55,7 +55,7 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res, next) => {
   const page = parseInt(req.query.page) || 1; // Get page number from query parameter
-  const perPage = 2; // Number of items per page
+  const perPage = 5; // Number of items per page
 
   try {
     const totalCount = await Recipe.countDocuments({
