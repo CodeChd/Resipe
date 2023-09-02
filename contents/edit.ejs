@@ -3,7 +3,7 @@
 <div class="flex w-[60%] mx-auto flex-col py-[4rem]">
   <h1 class="text-4xl font-semibold">Edit <%= recipes.name.charAt(0).toUpperCase() + recipes.name.slice(1) %> recipe</h1>
 
-  <form action="/recipe?_method=PUT" method="post" class="w-full flex flex-col gap-4 mt-4">
+  <form action="/recipe/<%= recipes.id %>?_method=PUT" method="post" class="w-full flex flex-col gap-4 mt-4">
     <div class="flex flex-col">
       <label for="name">Name:</label>
       <input
