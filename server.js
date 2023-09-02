@@ -14,6 +14,7 @@ mongoose
   });
 
 const Recipe = require("./models/Recipes");
+const Progress = require('./models/Progress')
 
 //Template Engine
 app.set("views", path.join(__dirname, "contents"));
@@ -100,7 +101,7 @@ app.post("/recipe", async (req, res) => {
 
 app.get("/recipe/:id", async (req, res, next) => {
   try {
-    const recipes = await Recipe.findById(req.params.id);
+    const recipes = await Recipe.findById(req.params.id).populate('progress');
     res.render("show", { recipes });
   } catch (e) {
     next(e);
@@ -116,11 +117,22 @@ app.get("/recipe/:id/edit", async (req, res, next) => {
   }
 });
 
+app.post('/recipe/:id/progress', async(req, res) =>{
+  const recipes = await Recipe.findById(req.params.id)
+  const progress = new Progress(req.body)
+  recipes.progress.push(progress)
+
+  await progress.save()
+  await recipes.save()
+
+  res.redirect(`/recipe/${req.params.id}`)
+})
+
 app.put("/recipe/:id", async (req, res, next) => {
   try {
     const recipes = await Recipe.findByIdAndUpdate(
       req.params.id,
-      req.body.recip
+      req.body.recipe
     );
     res.redirect(`/recipe/${recipes.id}`);
   } catch (e) {
@@ -133,8 +145,14 @@ app.delete("/recipe/:id", async (req, res) => {
   res.redirect("/");
 });
 
+app.delete('/recipe/:id/progress/:Pid/item', async(req,res) => {
+  const recipes = await Recipe.findByIdAndUpdate(req.params.id,{$pull: {progress: req.params.Pid}})
+  const progress = await Progress.findByIdAndDelete(req.params.Pid)
+  res.redirect(`/recipe/${req.params.id}`)
+})
+
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.log('Oops something went wrong!',err);
   next(err);
 });
 

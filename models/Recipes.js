@@ -16,9 +16,22 @@ const recipeSchema = new Schema({
   image: String,
   tags: String,
   source:String,
+  progress: [{type: Schema.Types.ObjectId, ref: 'Progress'}]  
 });
 
+
+// recipeSchema.post("findOneAndDelete", async (doc) => {
+//   if (doc) {
+//     await Reviews.deleteMany({ _id: { $in: doc.reviews } });
+//   }
+// });
+
+
 const Recipe = mongoose.model("Recipe", recipeSchema);
+
+module.exports = Recipe;
+
+
 
 // const recipe = new Recipe({
 //   name: "Adobo",
@@ -32,7 +45,3 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
 //    ,
 //   source: "Tito rizal",
 // });
-
-
-// recipe.save().then(x => console.log(x))
-module.exports = Recipe;

@@ -1,75 +1,69 @@
 <%- layout('layouts/boilerplate') %>
 
-<div class="grid place-content-center min-h-[80vh] items-center">
-  <h2>New Recipe</h2>
+<div class="flex w-[60%] mx-auto flex-col py-[4rem]">
+  <h1 class="text-4xl font-semibold">Add Recipe</h1>
 
-  
-  <form action="/recipe" method="post" class="flex flex-col gap-4 mt-4" >
-    <div>
+  <form action="/recipe" method="post" class="w-full flex flex-col gap-4 mt-4">
+    <div class="flex flex-col">
       <label for="name">Name:</label>
       <input
-      name="recipe[name]"
+        name="recipe[name]"
         type="text"
         id="name"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
       />
-    </div>
-    <div>
       <label for="Ingredients">Ingredients:</label>
-      <input
-      name="recipe[ingredients]"
+      <textarea
+        cols="20"
+        rows="3"
+        name="recipe[ingredients]"
         type="text"
         id="Ingredients"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
-      />
-  </div>
-    <div>
+      ></textarea>
       <label for="Instructions">Instructions:</label>
-      <input
-      name="recipe[instructions]"
+      <textarea
+        cols="30"
+        rows="5"
+        name="recipe[instructions]"
         type="text"
         id="Instructions"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
-      />
+      ></textarea>
     </div>
-    <div>
+
+    <div class="flex flex-col">
       <label for="cookingTime">Cooking Time:</label>
       <input
-      name="recipe[cookingTime]"
+        name="recipe[cookingTime]"
         type="text"
         id="cookingTime"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
       />
-    </div>
-    <div>
       <label for="Image">Image:</label>
       <input
-      name="recipe[image]"
+        name="recipe[image]"
         type="text"
         id="Image"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
       />
-    </div>
-    <div>
       <label for="tags">Tags:</label>
       <input
-      name="recipe[tags]"
+        name="recipe[tags]"
         type="text"
         id="tags"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
       />
-    </div>
-    <div>
       <label for="source">Source:</label>
       <input
-      name="recipe[source]"
+        name="recipe[source]"
         type="text"
         id="source"
         class="rounded-md border-[2px] border-gray-200 outline-none border-solid focus:ring-2 ring-sky-200"
       />
     </div>
-    <button class="bg-green-600 ">Submit</button>
+    <button class="bg-green-600 rounded-md text-white font-medium">Submit</button>
   </form>
 
-
+  <a class="text-lg font-medium mt-4" href="/"> < Go back </a>
 </div>
