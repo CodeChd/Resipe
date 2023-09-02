@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Progress = require('./Progress')
 
 // mongoose
 //   .connect("mongodb://127.0.0.1:27017/my-recipes")
@@ -20,11 +21,11 @@ const recipeSchema = new Schema({
 });
 
 
-// recipeSchema.post("findOneAndDelete", async (doc) => {
-//   if (doc) {
-//     await Reviews.deleteMany({ _id: { $in: doc.reviews } });
-//   }
-// });
+recipeSchema.post("findOneAndDelete", async (doc) => {
+  if (doc) {
+    await Progress.deleteMany({ _id: { $in: doc.progress } });
+  }
+});
 
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
